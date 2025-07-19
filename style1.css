@@ -1,0 +1,718 @@
+:root {
+    --pink: rgb(123, 29, 112);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: 0.2s linear;
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    overflow-x: hidden;
+}
+
+section {
+    padding: 2rem 9%;
+}
+
+.heading {
+    text-align: center;
+    font-size: 4rem;
+    font-weight: 300;
+    color: #0d5e30;
+    padding: 1rem;
+    margin: 2rem 0;
+    background: rgba(178, 176, 176, 0.5);
+}
+
+.heading span {
+    color: rgb(123, 29, 112);
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 1rem;
+    border-radius: 5rem;
+    background: #0d5e30;
+    padding: 0.9rem 3.5rem;
+    cursor: pointer;
+    font-size: 1.7rem;
+}
+
+.btn:hover {
+    background: var(--pink);
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(114, 115, 115, 0.5);
+    padding: 2rem 9%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    box-shadow: 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+header .logo {
+    font-size: 3rem;
+    color: rgb(123, 29, 112);
+    font-weight: bolder;
+}
+
+header .logo span {
+    color: var(--pink);
+}
+
+header .navbar a {
+    font-size: 2.5rem;
+    padding: 0 1.5rem;
+    color: #0d5e30;
+}
+
+header .navbar a:hover {
+    color: var(--pink);
+}
+
+header .icons a {
+    font-size: 2.5rem;
+    color: #0d5e30;
+    margin-left: 1.5rem;
+}
+
+header .icons a:hover {
+    color: var(--pink);
+}
+
+header #toggler {
+    display: none;
+}
+
+header .fa-bars {
+    font-size: 2rem;
+    color: #0d5e30;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1.5rem;
+    cursor: pointer;
+    border: 0.1rem solid rgba(0, 0, 0, 0.3);
+    display: none;
+}
+
+.home {
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    /* opacity: calc() ; */
+    background: url('/images1/bg-3.jpg') no-repeat center center/cover;
+}
+
+.home .content {
+    max-width: 60rem;
+}
+
+.home .content h3 {
+    font-size: 4rem;
+    color: #0d5e30;
+}
+
+.home .content span {
+    font-size: 3rem;
+    color: rgb(123, 29, 112);
+    padding: 3rem 0;
+    line-height: 1.5;
+}
+
+.home .content p {
+    font-size: 2rem;
+    color: #121111;
+    padding: 1rem 0;
+    line-height: 1.5;
+}
+.home .content .btn{
+    color: #eee;
+}
+
+.about .row {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 2rem 0;
+    padding-bottom: 3rem;
+}
+
+.about .row .video-container {
+    flex: 1 1 40rem;
+    position: relative;
+}
+
+.about .row .video-container video {
+    width: 100%;
+    border: 1.5rem solid #fff;
+    border-radius: 0.5rem;
+    height: 100%;
+    object-fit: cover;
+}
+
+.about .row .video-container h3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 1rem 2rem;
+    text-align: center;
+    mix-blend-mode: screen;
+}
+
+.about .row .content {
+    flex: 1 1 40rem;
+    padding: 1rem;
+}
+
+.about .row .content h3 {
+    font-size: 3rem;
+    color: #0d5e30;
+}
+
+.about .row .content p {
+    font-size: 1.8rem;
+    color: #121111;
+    padding: 0.5rem 0;
+    padding-top: 1rem;
+    line-height: 1.5;
+}
+ .btn{
+    color:white;
+}
+
+.icons img {
+    width: 100%;
+    min-width: 20px;
+    max-width: 70px;
+    min-height: 20px;
+    max-height: 70px;
+    object-fit: contain;
+}
+
+.icons-container {
+    background: #eee;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: 2rem;
+}
+
+.icons {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    text-align: center;
+    width: 22%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.icons img {
+    width: 80px;
+    height: auto;
+}
+
+.icons:hover {
+    transform: scale(1.05);
+}
+
+.products .box-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.products .box-container .box {
+    flex: 1 1 30rem;
+    box-shadow: 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    border: 0.1rem solid rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.products .box-container .box .discount {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.7rem 1rem;
+    font-size: 2rem;
+    color: var(--pink);
+    background: rgba(255, 51, 153, 0.05);
+    z-index: 1;
+    border-radius: 0.5rem;
+}
+
+.products .box-container .box .image {
+    text-align: center;
+    padding-top: 2rem;
+}
+
+.products .box-container .box .image img {
+    height: 25rem;
+    transition: transform 0.3s ease;
+}
+
+.products .box-container .box:hover .image img {
+    transform: scale(1.1);
+}
+
+.products .box-container .box .add-to-cart-icons {
+    position: absolute;
+    bottom: -7rem;
+    left: 0;
+    right: 0;
+    display: flex;
+    transition: bottom 0.3s ease;
+}
+
+.products .box-container .box:hover .add-to-cart-icons {
+    bottom: 0;
+}
+
+.products .box-container .box .add-to-cart-icons a {
+    height: 5rem;
+    line-height: 5rem;
+    font-size: 2rem;
+    width: 100%;
+    background: var(--pink);
+    color: #fff;
+    text-align: center;
+    transition: background 0.3s ease;
+    text-decoration: none;
+}
+
+.products .box-container .box .add-to-cart-icons .cart-btn {
+    border-left: 0.5rem solid #fff7;
+    border-right: 0.5rem solid #fff7;
+}
+
+.products .box-container .box .add-to-cart-icons a:hover {
+    background: #333;
+}
+
+.products .box-container .box .content {
+    padding: 2rem;
+    text-align: center;
+}
+
+.products .box-container .box .content h3 {
+    font-size: 2.5rem;
+    color: #0d5e30;
+}
+
+.products .box-container .box .content .price {
+    font-size: 2.5rem;
+    color: var(--pink);
+    font-weight: bolder;
+    padding-top: 1rem;
+}
+
+.products .box-container .box .content .price span {
+    font-size: 1.5rem;
+    color: #121111;
+    font-weight: lighter;
+    text-decoration: line-through;
+}
+
+
+.review .box-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+.review .box-container .box{
+    flex: 1 1 30rem;
+    box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, 0.1);
+    border-radius: .5rem;
+    padding: 3rem 2rem;
+    position: relative;
+    border: .1rem solid rgba(0, 0, 0, 0.1);
+}
+.review .box-container .box .fa-quote-right{
+    position: absolute;
+    bottom: 3rem;right:3rem;
+    font-size: 6rem;
+    color:#eee;
+}
+.review .-cboxontainer .box .stars i{
+    color:var(--pink);
+    font-size: 2rem;
+}
+.review .-cboxontainer .box p{
+    color:#121111;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    padding-top: 2rem;
+}
+
+.review .-cboxontainer .box .user{
+    display: flex;
+    align-items: center;
+    padding-top: 2rem;
+
+}
+.review .-cboxontainer .box .user img{
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 1rem;
+}
+.review .-cboxontainer .box .user h3{
+    font-size: 2rem;
+    color:#121111;
+
+}
+.review .-cboxontainer .box .user h3{
+    font-size: 2rem;
+    color:#121111;
+    
+}
+
+.review .-cboxontainer .box .user span{
+    font-size: 1.5rem;
+    color:#121111;
+    
+}
+.contact .row{
+    display: flex;
+    flex-wrap: wrap-reverse;
+    gap: 1.5rem;
+    align-items: center;
+}
+.contact .row form{
+    flex: 1 1 40rem;
+    padding:2rem 2.5rem;
+    box-shadow: 0.5rem 1.5rem rgba(136, 135, 135, 0.1); 
+    border:1rem solid rgba(0, 0, 0, 0.1);
+    /* background:#fff; */
+    border-radius: .5rem;
+}
+.contact .row .image{
+    flex: 1 1 40rem;
+}
+.contact .row .image img{
+    width: 100%;
+}
+.contact .row form .box{
+    padding: 1rem;
+    font-size: 1.7rem;
+    color: #eee;
+    text-transform: none;
+    border: 1rem solid rgba(0, 0, 0, 0.1);
+    border-radius: .5rem;
+    margin:.7rem 0;
+    width: 100%;
+
+}
+.contact .row form .box:focus{
+    border-color: var(--pink);
+}
+.contact .row form textarea{
+    height: 15rem;
+    resize:none
+}
+ .btn{
+    color: white;
+}
+.footer {
+  background:rgba(178, 176, 176, 0.5);
+  color: #4b0909;
+  padding: 50px 20px;
+  font-family: 'Poppins', sans-serif;
+}
+iframe{
+    width: 100%;
+}
+
+.footer .box-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer .box {
+  flex: 1 1 250px;
+  margin: 20px;
+}
+
+.footer .box h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  color: #0d5e30;
+  text-align: center;
+}
+
+.footer .box a {
+  display: block;
+  color: #121111;
+  font-size: 16px;
+  margin: 4px 0;
+  text-decoration: none;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.footer .box a:hover {
+  color:rgb(123, 29, 112);
+  padding-left: 5px;
+}
+
+.footer .box img {
+  margin-top: 10px;
+  max-width: 150px;
+ 
+}
+
+.footer .credit {
+  text-align: center;
+  padding-top: 20px;
+  font-size: 16px;
+  color: #000000;
+  border-top: 1px solid #444;
+  margin-top: 40px;
+}
+
+
+.footer .credit span {
+  color:rgb(123, 29, 112);
+  font-weight: bold;
+  font-size: 16px;
+}
+@media (max-width: 768px) {
+  .footer .box-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer .box {
+    margin: 10px 0;
+    text-align: center;
+  }
+}
+
+/* Media Queries */
+
+/* For screen sizes up to 991px */
+@media (max-width: 991px) {
+    html {
+        font-size: 55%; /* Slightly smaller base font size for better readability */
+    }
+
+    header {
+        padding: 2rem;
+    }
+
+    section {
+        padding: 2rem; /* Ensuring consistent padding for sections on smaller screens */
+    }
+
+    .home {
+        background-position: left; /* Adjust background alignment for better mobile display */
+    }
+}
+
+
+/* For screen sizes up to 768px */
+@media (max-width: 768px) {
+    header .fa-bars {
+        display: block; /* Display the hamburger menu */
+    }
+
+    header .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #eee;
+        border-top: 0.1rem solid rgba(0, 0, 0, 0.1);
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); /* Initially hidden navigation */
+        transition: clip-path 0.3s ease-in-out; /* Smooth transition for the navbar */
+    }
+
+    header #toggler:checked ~ .navbar {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* Reveal navigation on click */
+    }
+
+    header .navbar a {
+        margin: 1.5rem;
+        padding: 1.5rem;
+        background: #fff;
+        border: 0.1rem solid rgba(0, 0, 0, 0.1);
+        display: block; /* Stack navigation links vertically */
+        text-align: center; /* Center-align text for better mobile display */
+    }
+
+    .home .content h3 {
+        font-size: 5rem; /* Reduce font size for headings */
+    }
+
+    .home .content span {
+        font-size: 2.5rem; /* Adjust subheading font size */
+    }
+}
+
+/* For screen sizes up to 450px */
+@media (max-width: 450px) {
+    html {
+        font-size: 50%; /* Further reduce base font size for small screens */
+    }
+
+    .heading {
+        font-size: 3rem; /* Decrease heading size for better readability */
+    }
+
+    .home .content h3 {
+        font-size: 4rem; /* Reduce main heading font size for very small screens */
+    }
+
+    .home .content span {
+        font-size: 2rem; /* Adjust the subheading for smaller screens */
+    }
+
+    .btn {
+        padding: 0.8rem 3rem; /* Adjust button padding for smaller screens */
+        font-size: 1.5rem; /* Adjust font size for better fit */
+    }
+}
+.review .box-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.review .box-container .box {
+    flex: 1 1 30rem; /* Flex-grow, flex-shrink, flex-basis */
+    box-shadow: 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem; /* Consistent spacing */
+    padding: 3rem 2rem;
+    position: relative;
+}
+
+.review .box-container .box .fa-quote-right {
+    position: absolute;
+    bottom: 3rem;
+    right: 3rem;
+    font-size: 6rem;
+    color: #eee;
+}
+
+.review .box-container .box .stars i {
+    color: var(--pink); /* Ensure --pink is defined in your CSS */
+    font-size: 2rem;
+}
+
+.review .box-container .box p {
+    color: #999;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    padding-top: 2rem;
+}
+
+.review .box-container .box .user {
+    display: flex;
+    align-items: center;
+    padding-top: 2rem;
+}
+
+.review .box-container .box .user img {
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%; /* Makes the image circular */
+    object-fit: cover;   /* Ensures the image covers the area */
+    margin-right: 1rem;  /* Space between image and text */
+}
+
+.review .box-container .box .user h3 {
+    font-size: 1.5rem;
+    color: #999;
+}
+
+.review .box-container .box .user span {
+    font-size: 1.5rem;
+    color: #999;
+}
+
+
+
+
+
+
+
+
+
+
+/* Media Query for screens 768px and below */
+@media (max-width: 768px) {
+    .icons-container {
+        flex-direction: column; /* Stack the icons vertically */
+        padding: 1rem;
+    }
+
+    .icons-container .icons {
+        flex: 1 1 100%; /* Full width for each icon */
+        max-width: 100%; /* Prevent icons from squeezing */
+        margin-bottom: 1.5rem; /* Add space between each icon */
+    }
+
+    .icons-container .icons i {
+        font-size: 2.5rem; /* Slightly reduce icon size */
+        margin-right: 0.5rem; /* Adjust margin for smaller screens */
+    }
+
+    .icons-container .icons .info h3 {
+        font-size: 1.2rem; /* Adjust heading size */
+    }
+
+    .icons-container .icons .info span {
+        font-size: 0.9rem; /* Adjust description size */
+    }
+}
+
+/* Media Query for screens 450px and below */
+@media (max-width: 450px) {
+    .icons-container {
+        padding: 0.5rem; /* Reduce padding for very small screens */
+    }
+
+    .icons-container .icons {
+        padding: 1.5rem; /* Reduce padding inside each icon */
+    }
+
+    .icons-container .icons i {
+        font-size: 2rem; /* Further reduce icon size */
+    }
+
+    .icons-container .icons .info h3 {
+        font-size: 1rem;
+    }
+
+    .icons-container .icons .info span {
+        font-size: 0.8rem;
+    }
+}
