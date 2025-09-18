@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sms kitchen</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    .container {
+      max-width: 450px;
+      margin: auto;
+      background: rgb(179, 182, 186);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    }
+    .dropdown-container {
+      background: white;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+      max-height: 180px;
+      overflow-y: auto;
+      text-align: left;
+    }
+    .dropdown-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px;
+      cursor: pointer;
+      border-bottom: 1px solid #eee;
+    }
+    .dropdown-item:hover {
+      background: #d7d7d7;
+    }
+    .delete-icon {
+      color: #02315e;;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .selected-item {
+      background: #ecf0f1;
+      padding: 8px;
+      border-radius: 6px;
+      margin-bottom: 5px;
+    }
+    input, button, select {
+      padding: 10px;
+      margin: 6px 0;
+      margin-right: 20px;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px;
+      background: #ecf0f1;
+      margin: 5px 0;
+      border-radius: 6px;
+      gap: 5px;
+    }
+    .delete-btn, .purchased-btn {
+      background: #02315e;;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      padding: 2px 6px;
+      font-size: 14px;
+    }
+    .delete-btn:hover {
+      background: rgb(85, 125, 160);
+    }
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    button {
+      background: #02315e;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+    h3 {
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🥘 Kitchen App</h1>
+  <div class="container">
+
+    <!-- Custom Dropdown -->
+    <div class="dropdown-container" id="dropdownContainer"></div>
+    <div class="selected-item" id="selectedItem">-- Select Kitchen Item --</div>
+
+    <!-- Quantity and Units -->
+    <input type="number" id="quantityInput" placeholder="Enter quantity">
+    <select id="unitSelect">
+      <option value="kg">Kg</option>
+      <option value="grams">gm</option>
+      <option value="litre">Litre</option> 
+      <option value="piece">Piece</option>
+      <option value="pocket">pocket</option>
+      
+    </select>
+
+    <!-- Add Button -->
+    <button onclick="addFromDropdown()">➕ Add to List</button>
+
+    <!-- Add new item to dropdown -->
+    <input type="text" id="newItemInput" placeholder="Add new kitchen item">
+    <button onclick="addNewItem()">➕ Add to Dropdown</button>
+
+    <!-- Added Items List -->
+    <h3>My List</h3>
+    <ul id="itemList"></ul>
+
+    <!-- Actions -->
+    <div class="actions">
+      <button onclick="copyList()">📋 Copy</button>
+      <button onclick="downloadList()">⬇ Download</button>
+      <button onclick="sendWhatsApp()">📱 WhatsApp</button>
+      <button onclick="clearList()">🗑 Clear</button>
+    </div>
+  </div>
+
+  <script>
+    const dropdownContainer = document.getElementById("dropdownContainer");
+    const selectedItem = document.getElementById("selectedItem");
+    const itemList = document.getElementById("itemList");
+    const newItemInput = document.getElementById("newItemInput");
+    const quantityInput = document.getElementById("quantityInput");
+    const unitSelect = document.getElementById("unitSelect");
+
+    let kitchenItems = ["Rice","Sugar","Salt","Milk","Bread","Eggs","Butter","Oil","Flour","Tea","Coffee","Vegetables","Fruits","Spices","Cheese","Chicken","Fish","Pasta"];
+    let currentSelected = "";
+
+    function renderDropdown() {
+      dropdownContainer.innerHTML = "";
+      kitchenItems.forEach(item => {
+        let div = document.createElement("div");
+        div.classList.add("dropdown-item");
+        div.innerHTML = `<span onclick="selectItem('${item}')">${item}</span> <span class="delete-icon" onclick="deleteDropdownItem('${item}')">❌</span>`;
+        dropdownContainer.appendChild(div);
+      });
+    }
+
+    function selectItem(item) {
+      currentSelected = item;
+      selectedItem.textContent = item;
+    }
+
+    function deleteDropdownItem(item) {
+      kitchenItems = kitchenItems.filter(i => i !== item);
+      renderDropdown();
+      if (currentSelected === item) {
+        currentSelected = "";
+        selectedItem.textContent = "-- Select Kitchen Item --";
+      }
+    }
+
+    function addFromDropdown() {
+      if (!currentSelected) {
+        alert("Please select an item!");
+        return;
+      }
+      let quantity = quantityInput.value;
+      let unit = unitSelect.value;
+      if (quantity === "" || quantity <= 0) {
+        alert("Please enter a valid quantity!");
+        return;
+      }
+
+      let li = document.createElement("li");
+      li.innerHTML = `
+        <span>${currentSelected} - ${quantity} ${unit}</span>
+        <div>
+          <button class="delete-btn" onclick="deleteItem(this)">❌</button>
+        </div>`;
+      itemList.appendChild(li);
+
+      selectedItem.textContent = "-- Select Kitchen Item --";
+      currentSelected = "";
+      quantityInput.value = "";
+      unitSelect.value = "kg";
+    }
+
+    function deleteItem(button) {
+      button.closest("li").remove();
+    }
+
+    function togglePurchased(button) {
+      let li = button.closest("li");
+      li.classList.toggle("purchased");
+    }
+
+    function addNewItem() {
+      let newItem = newItemInput.value.trim();
+      if (!newItem) {
+        alert("Please enter an item!");
+        return;
+      }
+      kitchenItems.push(newItem);
+      renderDropdown();
+      newItemInput.value = "";
+    }
+
+    function copyList() {
+      let items = [...itemList.getElementsByTagName("li")].map(li => li.innerText.replace("❌", "").replace("✅", "").trim()).join("\n");
+      navigator.clipboard.writeText(items);
+      alert("List copied to clipboard!");
+    }
+
+    function downloadList() {
+      let items = [...itemList.getElementsByTagName("li")].map(li => li.innerText.replace("❌", "").replace("✅", "").trim()).join("\n");
+      let blob = new Blob([items], { type: "text/plain" });
+      let link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "kitchen-list.txt";
+      link.click();
+    }
+
+    function sendWhatsApp() {
+      let items = [...itemList.getElementsByTagName("li")].map(li => li.innerText.replace("❌", "").replace("✅", "").trim()).join("\n");
+      if (!items) {
+        alert("List is empty!");
+        return;
+      }
+      let url = "https://wa.me/?text=" + encodeURIComponent("📝 My Kitchen List:\n" + items);
+      window.open(url, "_blank");
+    }
+
+    function clearList() {
+      itemList.innerHTML = "";
+    }
+
+    renderDropdown();
+  </script>
+
+</body>
+</html>
